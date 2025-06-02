@@ -1,0 +1,345 @@
+html,
+body {
+  height: 100%;
+  width: 100%;
+  background-color: #061072;
+  color: #fff;
+  margin: 0;
+  padding: 0;
+  /* Используем переменную для обычного курсора. `auto` - резервный вариант. */
+  cursor: var(--default-cursor-url, auto);
+  font-smooth: never;
+}
+
+* {
+  user-select: none;
+  -khtml-user-select: none;
+  -o-user-select: none;
+  -moz-user-select: -moz-none;
+  -webkit-user-select: none;
+}
+
+span {
+  display: inline-block;
+}
+
+#menu_bar {
+  margin-bottom: 0.8em;
+  padding: 0.3em;
+  background-color: #888;
+  font-size: 1.1em;
+  /* НОВОЕ: Задаем Flexbox для основного меню, чтобы разделители также управлялись flexbox */
+  display: flex;
+  justify-content: center; /* Центрируем элементы по горизонтали */
+  align-items: center; /* Выравниваем по центру по вертикали */
+  flex-wrap: wrap; /* Позволяем элементам переноситься на новую строку, если не хватает места */
+}
+
+#menu_bar div.menu { /* Уточняем селектор для div с классом menu */
+  display: inline-block;
+}
+
+/* НОВОЕ: Стили для разделителя */
+.menu_separator {
+  color: #061072; /* Цвет, который будет виден на сером фоне меню */
+  padding: 0 0.5em; /* Отступы по бокам */
+  /* Убедимся, что разделитель также ведет себя как flex-элемент */
+  display: inline-flex; /* Используем inline-flex, чтобы он был частью строки, но мог быть выровнен */
+  align-items: center;
+  height: 1.5em; /* Примерная высота, чтобы он был в центре текста */
+}
+
+
+.menu_item::first-letter {
+  color: #f00;
+}
+
+.menu_item {
+  display: block;
+  color: #061072;
+  /* Курсор для элементов меню */
+  cursor: var(--default-cursor-url, auto);
+}
+
+.menu_item:hover {
+  /* Курсор для элементов меню при наведении */
+  cursor: var(--hover-cursor-url, pointer); /* `pointer` - резервный вариант */
+}
+
+.content {
+  display: block;
+  position: absolute;
+  background-color: #888;
+  visibility: hidden;
+}
+
+.content ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0.3em;
+}
+
+.content li {
+  /* Курсор для пунктов выпадающего списка (если они кликабельны) */
+  cursor: var(--default-cursor-url, auto);
+}
+
+.content li:hover {
+  /* Курсор для пунктов выпадающего списка при наведении */
+  cursor: var(--hover-cursor-url, pointer);
+}
+
+.content li:active {
+  color: #f00;
+}
+
+#buffer {
+  display: none;
+}
+
+#main_content {
+  font-size: 1.2em;
+  padding: 1em;
+  padding-top: 0.2em;
+  caret-color: rgba(73, 217, 228, 0.85);
+}
+
+.page {
+  display: none;
+}
+
+#fgbg {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  background-image: url("../bg.png");
+  background-blend-mode: multiply;
+  z-index: 9999;
+  pointer-events: none;
+}
+
+/* Курсор для всех ссылок (как встроенных, так и блочных) */
+a,
+a.retro-link {
+  cursor: var(--default-cursor-url, auto);
+}
+
+a:hover,
+a.retro-link:hover {
+  /* Курсор для ссылок при наведении */
+  cursor: var(--hover-cursor-url, pointer);
+}
+
+a.retro-link {
+  color: #fff;
+  background: #061072;
+  padding: 2px 6px;
+  border: 2px solid #fff;
+  border-radius: 2px;
+  text-decoration: none;
+  font-family: "Press Start 2P", cursive;
+  font-size: 1em;
+  letter-spacing: 1px;
+  transition: background 0.15s, color 0.15s, border-color 0.15s;
+  box-shadow: 2px 2px 0 #000;
+}
+
+a.retro-link:hover,
+a.retro-link:focus {
+  color: #f00;
+  background: #222c99; /* немного светлее при наведении */
+  border-color: #f00;
+  outline: none;
+  box-shadow: 2px 2px 0 #f00;
+}
+/* Дополнительные стили для улучшенной навигации */
+.menu_item[data-direct="true"] {
+  background-color: #444;
+  border-left: 3px solid #f00;
+}
+
+.menu_item[data-direct="true"]:hover {
+  background-color: #555;
+  border-left-color: #ff0;
+}
+
+.menu_item.active {
+  background-color: #222c99;
+  color: #fff;
+}
+
+/* Улучшенные стили для анимации печати */
+.typing-cursor {
+  animation: blink 1s infinite;
+}
+
+@keyframes blink {
+  0%,
+  50% {
+    opacity: 1;
+  }
+  51%,
+  100% {
+    opacity: 0;
+  }
+}
+
+/* Стили для индикатора загрузки */
+.loading-indicator {
+  display: inline-block;
+  width: 20px;
+  height: 20px;
+  border: 3px solid #f3f3f3;
+  border-top: 3px solid #f00;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+.switch {
+  position: relative;
+  display: inline-block;
+  width: 60px;
+  height: 34px;
+}
+.switch input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+.slider {
+  position: absolute;
+  /* Курсор для ползунка/переключателя */
+  cursor: var(--default-cursor-url, auto);
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #ccc;
+  transition: 0.4s;
+}
+
+.slider:hover {
+  /* Курсор для ползунка/переключателя при наведении */
+  cursor: var(--hover-cursor-url, pointer);
+}
+
+.slider:before {
+  position: absolute;
+  content: "";
+  height: 26px;
+  width: 26px;
+  left: 4px;
+  bottom: 4px;
+  background-color: white;
+  transition: 0.4s;
+}
+input:checked + .slider {
+  background-color: #2196f3;
+}
+input:focus + .slider {
+  box-shadow: 0 0 1px #2196f3;
+}
+input:checked + .slider:before {
+  transform: translateX(26px);
+}
+#power-screen {
+  position: fixed;
+  z-index: 99999;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: #061072;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background-image: url("../bg.png");
+}
+
+/* Стили для группировки тумблеров и меток */
+.toggle-group {
+  display: flex;
+  flex-direction: column; /* Располагаем тумблер и текст под ним */
+  align-items: center;
+  margin-bottom: 20px; /* Отступ между группами тумблеров */
+}
+
+/* Стиль для меток тумблеров */
+.toggle-label {
+  margin-top: 10px; /* Отступ между тумблером и его меткой */
+  color: #fff;
+  font-family: "Press Start 2P", cursive;
+  font-size: 1.1em;
+  text-align: center;
+}
+
+/* Удален старый класс .tumbler, так как он заменен .toggle-label */
+/* .tumbler {
+  margin-top: 20px;
+  color: #fff;
+  font-family: "Press Start 2P", cursive;
+  font-size: 1.1em;
+} */
+
+@media (max-width: 768px) {
+  body {
+    font-size: 1.4vh;
+  }
+
+  /* НОВОЕ: Изменения для меню на мобильных устройствах */
+  #menu_bar {
+    flex-direction: column; /* Элементы меню будут располагаться столбиком */
+    padding: 0; /* Убираем горизонтальный отступ у родителя */
+    font-size: 2vh;
+  }
+
+  #menu_bar div.menu {
+    display: block; /* Делаем каждый блок меню блочным, чтобы он занимал всю ширину */
+    width: 100%; /* Занимаем всю доступную ширину */
+    padding: 0.3em; /* Добавляем внутренний отступ для каждого элемента */
+    box-sizing: border-box; /* Учитываем padding в общей ширине */
+    text-align: center; /* Центрируем текст внутри элемента */
+    margin-bottom: 2px; /* Небольшой отступ между элементами меню */
+  }
+
+  #menu_bar div.menu:last-child {
+    margin-bottom: 0; /* Убираем отступ после последнего элемента */
+  }
+
+  .menu_separator {
+    display: none; /* Скрываем разделители на мобильных устройствах */
+  }
+
+  #main_content p {
+    word-break: normal !important;
+    overflow-wrap: break-word;
+    line-height: 1.5;
+  }
+  a.retro-link {
+    text-decoration: underline;
+    border: none;
+    background: transparent;
+    padding: 0;
+    border-radius: 0;
+    box-shadow: none;
+  }
+
+  a.retro-link:hover,
+  a.retro-link:focus {
+    background: transparent;
+    border-color: transparent;
+    box-shadow: none;
+  }
+}

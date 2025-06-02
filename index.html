@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html language="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, shrink-to-fit=no, user-scalable=no"
+    />
+    <meta property="og:type" content="article" />
+    <meta property="og:title" content="jitter_34" />
+    <meta property="og:author" content="jitter_34" />
+    <meta property="og:description" content="Website our team" />
+    <meta property="og:image:width" content="512" />
+    <meta property="og:image:height" content="512" />
+    <title>jitter_34</title>
+    <link rel="preload" as="image" href="bg.png" />
+    <link rel="icon" type="image/x-icon" href="favicon.png" />
+    <link rel="icon" type="image/png" href="favicon.png" />
+    <link rel="stylesheet" type="text/css" href="PressStart2P.css" />
+    <link rel="stylesheet" type="text/css" href="white_on_blue.css" />
+  </head>
+  <body>
+    <div id="power-screen">
+      <!-- Группа для тумблера питания -->
+      <div class="toggle-group">
+        <label class="switch">
+          <input id="power-toggle" type="checkbox" />
+          <span class="slider"></span>
+        </label>
+        <div class="toggle-label">Включите питание</div>
+      </div>
+
+      <!-- Группа для тумблера звука -->
+      <div class="toggle-group">
+        <label class="switch">
+          <input id="sound-toggle" type="checkbox" checked /> <!-- checked по умолчанию, чтобы звук был включен -->
+          <span class="slider"></span>
+        </label>
+        <div class="toggle-label">Включите звук</div>
+      </div>
+    </div>
+
+    <div id="menu_bar">
+      <div id="mains" class="menu">
+        <span id="init" class="menu_item">Главная</span>
+      </div>
+      <!-- Разделитель -->
+      <span class="menu_separator">|</span>
+      <div id="help" class="menu">
+        <span id="about" class="menu_item">Участники</span>
+      </div>
+      <!-- Разделитель -->
+      <span class="menu_separator">|</span>
+      <div id="achievements_menu_container" class="menu"> <!-- Изменено ID для уникальности -->
+        <span id="achievements" class="menu_item">Достижения</span>
+      </div>
+    </div>
+
+    <div id="main_content"></div>
+
+    <div id="init_page" class="page">
+      <p>Привет!</p> <!-- НОВОЕ: Золотой цвет для этого параграфа -->
+      <p>Это команда jitter_34.</p>
+      <p>Мы представляем <a href="https://volsu.ru/">Волгоградский Государственный Университет</a>
+      </p>
+      <p>Мы специализируемся на решении CTF-тасок.</p>
+      <p data-speed="100">Ну...</p>
+      <p>По крайней мере пытаемся...</p>
+    </div>
+
+    <div id="about_page" class="page">
+      <p>Наши участники:</p>
+      <p>Солуянов Федор</p>
+      <p>Трофимов Александр</p>
+      <p>Окунев Владимир</p>
+      <p>Новиков Дмитрий</p>
+      <p>Толстов Никита</p>
+      <!-- <img src="test_image.png" alt="Логотип команды" style="max-width: 100%; height: auto; display: block; margin: 1em 0;"> -->
+    </div>
+
+    <div id="achievements_page" class="page">
+      <p>Наши достижения:</p> <!-- НОВОЕ: Светло-голубой цвет для этого параграфа -->
+      <p data-color="#FF0000">
+        Кибер Волга 2025 ФИНАЛ -
+        <a href="https://olymp.psuti.ru/events/23" target="_blank">2 место</a>
+      </p>
+      <p>
+        Кибер Волга 2025 -
+        <a href="https://olymp.psuti.ru/events/22" target="_blank">11 место</a>
+      </p>
+      <p>
+        Кибер Волга 2024 -
+        <a href="https://olymp.psuti.ru/events/7" target="_blank">7 место</a>
+      </p>
+      <p>Кибер Волга 2022 - <a href="javascript:void(0);">7 место</a></p>
+      <!-- <img src="test_image.png" alt="Логотип команды" style="max-width: 100%; height: auto; display: block; margin: 1em 0;"> -->
+    </div>
+
+    <div id="fgbg"></div>
+
+    <script src="main.js"></script>
+  </body>
+</html>
