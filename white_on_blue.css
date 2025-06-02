@@ -6,7 +6,6 @@ body {
   color: #fff;
   margin: 0;
   padding: 0;
-  /* Используем переменную для обычного курсора. `auto` - резервный вариант. */
   cursor: var(--default-cursor-url, auto);
   font-smooth: never;
 }
@@ -28,25 +27,22 @@ span {
   padding: 0.3em;
   background-color: #888;
   font-size: 1.1em;
-  /* НОВОЕ: Задаем Flexbox для основного меню, чтобы разделители также управлялись flexbox */
   display: flex;
-  justify-content: center; /* Центрируем элементы по горизонтали */
-  align-items: center; /* Выравниваем по центру по вертикали */
-  flex-wrap: wrap; /* Позволяем элементам переноситься на новую строку, если не хватает места */
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
 }
 
-#menu_bar div.menu { /* Уточняем селектор для div с классом menu */
+#menu_bar div.menu {
   display: inline-block;
 }
 
-/* НОВОЕ: Стили для разделителя */
 .menu_separator {
-  color: #061072; /* Цвет, который будет виден на сером фоне меню */
-  padding: 0 0.5em; /* Отступы по бокам */
-  /* Убедимся, что разделитель также ведет себя как flex-элемент */
-  display: inline-flex; /* Используем inline-flex, чтобы он был частью строки, но мог быть выровнен */
+  color: #061072;
+  padding: 0 0.5em;
+  display: inline-flex;
   align-items: center;
-  height: 1.5em; /* Примерная высота, чтобы он был в центре текста */
+  height: 1.5em;
 }
 
 
@@ -57,13 +53,11 @@ span {
 .menu_item {
   display: block;
   color: #061072;
-  /* Курсор для элементов меню */
   cursor: var(--default-cursor-url, auto);
 }
 
 .menu_item:hover {
-  /* Курсор для элементов меню при наведении */
-  cursor: var(--hover-cursor-url, pointer); /* `pointer` - резервный вариант */
+  cursor: var(--hover-cursor-url, pointer);
 }
 
 .content {
@@ -80,12 +74,10 @@ span {
 }
 
 .content li {
-  /* Курсор для пунктов выпадающего списка (если они кликабельны) */
   cursor: var(--default-cursor-url, auto);
 }
 
 .content li:hover {
-  /* Курсор для пунктов выпадающего списка при наведении */
   cursor: var(--hover-cursor-url, pointer);
 }
 
@@ -120,7 +112,6 @@ span {
   pointer-events: none;
 }
 
-/* Курсор для всех ссылок (как встроенных, так и блочных) */
 a,
 a.retro-link {
   cursor: var(--default-cursor-url, auto);
@@ -128,7 +119,6 @@ a.retro-link {
 
 a:hover,
 a.retro-link:hover {
-  /* Курсор для ссылок при наведении */
   cursor: var(--hover-cursor-url, pointer);
 }
 
@@ -149,12 +139,11 @@ a.retro-link {
 a.retro-link:hover,
 a.retro-link:focus {
   color: #f00;
-  background: #222c99; /* немного светлее при наведении */
+  background: #222c99;
   border-color: #f00;
   outline: none;
   box-shadow: 2px 2px 0 #f00;
 }
-/* Дополнительные стили для улучшенной навигации */
 .menu_item[data-direct="true"] {
   background-color: #444;
   border-left: 3px solid #f00;
@@ -170,7 +159,6 @@ a.retro-link:focus {
   color: #fff;
 }
 
-/* Улучшенные стили для анимации печати */
 .typing-cursor {
   animation: blink 1s infinite;
 }
@@ -186,7 +174,6 @@ a.retro-link:focus {
   }
 }
 
-/* Стили для индикатора загрузки */
 .loading-indicator {
   display: inline-block;
   width: 20px;
@@ -219,7 +206,6 @@ a.retro-link:focus {
 }
 .slider {
   position: absolute;
-  /* Курсор для ползунка/переключателя */
   cursor: var(--default-cursor-url, auto);
   top: 0;
   left: 0;
@@ -230,7 +216,6 @@ a.retro-link:focus {
 }
 
 .slider:hover {
-  /* Курсор для ползунка/переключателя при наведении */
   cursor: var(--hover-cursor-url, pointer);
 }
 
@@ -268,58 +253,47 @@ input:checked + .slider:before {
   background-image: url("../bg.png");
 }
 
-/* Стили для группировки тумблеров и меток */
 .toggle-group {
   display: flex;
-  flex-direction: column; /* Располагаем тумблер и текст под ним */
+  flex-direction: column;
   align-items: center;
-  margin-bottom: 20px; /* Отступ между группами тумблеров */
+  margin-bottom: 20px;
 }
 
-/* Стиль для меток тумблеров */
 .toggle-label {
-  margin-top: 10px; /* Отступ между тумблером и его меткой */
+  margin-top: 10px;
   color: #fff;
   font-family: "Press Start 2P", cursive;
   font-size: 1.1em;
   text-align: center;
 }
 
-/* Удален старый класс .tumbler, так как он заменен .toggle-label */
-/* .tumbler {
-  margin-top: 20px;
-  color: #fff;
-  font-family: "Press Start 2P", cursive;
-  font-size: 1.1em;
-} */
-
 @media (max-width: 768px) {
   body {
     font-size: 1.4vh;
   }
 
-  /* НОВОЕ: Изменения для меню на мобильных устройствах */
   #menu_bar {
-    flex-direction: column; /* Элементы меню будут располагаться столбиком */
-    padding: 0; /* Убираем горизонтальный отступ у родителя */
+    flex-direction: column;
+    padding: 0;
     font-size: 2vh;
   }
 
   #menu_bar div.menu {
-    display: block; /* Делаем каждый блок меню блочным, чтобы он занимал всю ширину */
-    width: 100%; /* Занимаем всю доступную ширину */
-    padding: 0.3em; /* Добавляем внутренний отступ для каждого элемента */
-    box-sizing: border-box; /* Учитываем padding в общей ширине */
-    text-align: center; /* Центрируем текст внутри элемента */
-    margin-bottom: 2px; /* Небольшой отступ между элементами меню */
+    display: block;
+    width: 100%;
+    padding: 0.3em;
+    box-sizing: border-box;
+    text-align: center;
+    margin-bottom: 2px;
   }
 
   #menu_bar div.menu:last-child {
-    margin-bottom: 0; /* Убираем отступ после последнего элемента */
+    margin-bottom: 0;
   }
 
   .menu_separator {
-    display: none; /* Скрываем разделители на мобильных устройствах */
+    display: none;
   }
 
   #main_content p {
