@@ -116,6 +116,7 @@ span {
 a,
 a.retro-link {
   cursor: var(--default-cursor-url, auto);
+  color: white;
 }
 
 a:hover,
