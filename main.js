@@ -353,8 +353,10 @@ window.onload = function() {
 
       if (powerToggle.checked) {
         const powerScreen = document.getElementById('power-screen');
+        const fgbg = document.getElementById('fgbg');
         powerScreen.style.transition = 'opacity 0.7s';
         powerScreen.style.opacity = '0';
+        fgbg.style.visibility = 'visible';
         setTimeout(() => {
           powerScreen.style.display = 'none';
           menu();

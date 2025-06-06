@@ -110,6 +110,7 @@ span {
   background-blend-mode: multiply;
   z-index: 9999;
   pointer-events: none;
+  visibility: hidden;
 }
 
 a,
@@ -144,6 +145,12 @@ a.retro-link:focus {
   outline: none;
   box-shadow: 2px 2px 0 #f00;
 }
+
+a:visited {
+  color: white;
+  text-decoration: underline;
+}
+
 .menu_item[data-direct="true"] {
   background-color: #444;
   border-left: 3px solid #f00;
@@ -250,6 +257,7 @@ input:checked + .slider:before {
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  z-index: 999;
   background-image: url("../bg.png");
 }
 
@@ -266,6 +274,17 @@ input:checked + .slider:before {
   font-family: "Press Start 2P", cursive;
   font-size: 1.1em;
   text-align: center;
+}
+
+#avtor {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  padding: 0.5em;
+  font-size: 0.8em;
+  color: #fff;
+  text-align: right;
+  z-index: 1000;
 }
 
 @media (max-width: 768px) {
